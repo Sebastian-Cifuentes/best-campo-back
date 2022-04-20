@@ -4,10 +4,15 @@ const farmer = Schema({
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User',
-        required: true
+        required: true,
+        unique: true
     },
     foods: [{
         id: {
+            type: Schema.Types.ObjectId,
+            ref: 'Food'
+        },
+        name: {
             type: String
         },
         onSale: {

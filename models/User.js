@@ -22,6 +22,9 @@ const userSchema = Schema({
         type: Schema.Types.ObjectId,
         ref: 'TypeUser'
     },
+    data: {
+        type: String
+    },
     email: {
         type: String,
         required: true,

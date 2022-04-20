@@ -20,6 +20,26 @@ const getAll = (req = request, res = response) => {
 
 };
 
+const getById = async(req = request, res = response) => {
+
+    const { id } = req.params;
+
+    const typeUser = await TypeUser.findById({ _id: id });
+
+    if (!typeUser) {
+        return res.status(400).json({
+            ok: false
+        });
+    }
+
+    return res.json({
+        ok: true,
+        typeUser
+    });
+
+};
+
 module.exports = {
-    getAll
+    getAll,
+    getById
 };

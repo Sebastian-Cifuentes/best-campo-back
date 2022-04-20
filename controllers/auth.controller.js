@@ -54,16 +54,15 @@ const register = async(req, res = response) => {
 const login = async(req, res = response) => {
 
     const { email, password } = req.body;
-    console.log(req.body);
 
     try {
 
         const user = await User.findOne({ email });
 
         if (!user) {
-            return res.status(200).json({
+            return res.status(400).json({
                 ok: false,
-                message: 'Error al encontrar el user'
+                message: 'El correo ingresado no existe'
             });
         }
 
@@ -104,36 +103,45 @@ const forgotPassword = (req, res = response) => {
 };
 
 const assignTypeUser = async(req = request, res = response) => {
-
     try {
-
         const { id } = req.params;
         const { typeUserId } = req.query;
-
         const user = await User.findById({ _id: id });
-
         user.typeUser = typeUserId;
-
         await user.save();
-
         return res.status(200).json({
             ok: true
         });
-
     } catch (err) {
-
         return res.status(500).json({
             ok: false,
             err
         });
-
     }
+};
 
+const assignData = async(req = request, res = response) => {
+    try {
+        const { id } = req.params;
+        const { dataId } = req.query;
+        const user = await User.findById({ _id: id });
+        user.data = dataId;
+        await user.save();
+        return res.status(200).json({
+            ok: true
+        });
+    } catch (err) {
+        return res.status(500).json({
+            ok: false,
+            err
+        });
+    }
 };
 
 module.exports = {
     register,
     login,
     forgotPassword,
-    assignTypeUser
+    assignTypeUser,
+    assignData
 };

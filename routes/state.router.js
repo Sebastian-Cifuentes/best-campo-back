@@ -1,8 +1,8 @@
 const { Router } = require('express');
-const { getAll, getById } = require('../controllers/typeUser.controller');
+const { getById, getAll } = require('../controllers/state.controller');
 const router = Router();
 
-router.get('/', getAll);
-
 router.get('/:id', getById);
+router.get('', getAll);
+
 module.exports = router;

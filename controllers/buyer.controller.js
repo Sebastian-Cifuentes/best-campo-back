@@ -11,7 +11,8 @@ const createBuyer = async(req, res = response) => {
 
         res.status(201).json({
             ok: true,
-            message: 'Datos guardados'
+            message: 'Datos guardados',
+            buyer
         });
 
     } catch (error) {

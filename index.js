@@ -18,6 +18,8 @@ app.use('/farmer', require('./routes/farmer.router'));
 app.use('/buyer', require('./routes/buyer.router'));
 app.use('/foods', require('./routes/food.router'));
 app.use('/type-user', require('./routes/typeUser.router'));
+app.use('/order', require('./routes/order.router'));
+app.use('/states', require('./routes/state.router'));
 
 // Connect to database
 mongoose.connection.openUri(process.env.MONGODB_URI || 'mongodb://localhost:27017/bestCampo', (err, res) => {

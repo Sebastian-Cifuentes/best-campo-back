@@ -2,24 +2,30 @@ const { Schema, model } = require('mongoose');
 
 const order = Schema({
     foods: [{
-        name: {
+        id: {
             type: Schema.Types.ObjectId,
             ref: 'Food'
         },
-        timeItTakes: {
+        name: {
+            type: String
+        },
+        quantity: {
             type: String
         }
-
     }],
-    buyer: {
+    user: {
         type: Schema.Types.ObjectId,
-        ref: 'Buyer',
-        required: true
+        ref: 'User'
     },
-    farmer: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Farmer'
-    }]
+    deliveryTime: {
+        type: String
+    },
+    code: {
+        type: Number
+    },
+    state: {
+        type: String
+    }
 });
 
 module.exports = model('Order', order);
